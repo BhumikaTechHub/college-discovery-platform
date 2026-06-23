@@ -49,16 +49,42 @@ exports.getSavedComparisons =
 
           where: {
             userId
-          },
-
-          include: {
-            college1: true,
-            college2: true
           }
 
         });
 
-      res.json(comparisons);
+      const result =
+        await Promise.all(
+
+          comparisons.map(
+            async (comparison) => {
+
+              const college1 =
+                await prisma.college.findUnique({
+                  where: {
+                    id: comparison.college1Id
+                  }
+                });
+
+              const college2 =
+                await prisma.college.findUnique({
+                  where: {
+                    id: comparison.college2Id
+                  }
+                });
+
+              return {
+                ...comparison,
+                college1,
+                college2
+              };
+
+            }
+          )
+
+        );
+
+      res.json(result);
 
     } catch (error) {
 
