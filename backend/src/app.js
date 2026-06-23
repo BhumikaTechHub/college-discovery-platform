@@ -9,7 +9,8 @@ const comparisonRoutes = require("./routes/comparison.routes");
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://college-discovery-platform-g0wzkxw5k-bhumika-yadav.vercel.app"],
+
   credentials: true,
 }));
 
