@@ -11,9 +11,7 @@ Backend API
 
 https://college-discovery-platform-n4hr.onrender.com
 
-Demo Video (Loom)
-
-https://loom.com/share/YOUR_VIDEO_LINK
+ 
 
 ## Overview
 
