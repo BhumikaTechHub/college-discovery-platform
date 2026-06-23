@@ -2,9 +2,10 @@
 
 
 Live Demo
+
 Frontend
 
-https:/college-discovery-platform-7pp0f34km-bhumika-yadav.vercel.app
+https://college-discovery-platform-dusky-chi.vercel.app/
 
 Backend API
 
