@@ -18,17 +18,19 @@ model User {
 }
 
 model College {
-  id         String         @id
-  name       String
-  location   String
-  fees       Int
-  rating     Float
-  overview   String
-  courses    String?        @default("Not Available")
-  placements String?        @default("Not Available")
-  reviews    String?        @default("No Reviews Yet")
-  createdAt  DateTime       @default(now())
-  savedBy    SavedCollege[]
+  id                   String            @id
+  name                 String
+  location             String
+  fees                 Int
+  rating               Float
+  overview             String
+  courses              String?           @default("Not Available")
+  placements           String?           @default("Not Available")
+  reviews              String?           @default("No Reviews Yet")
+  createdAt            DateTime          @default(now())
+  savedBy              SavedCollege[]
+  comparisonAsCollege1 SavedComparison[] @relation("College1")
+  comparisonAsCollege2 SavedComparison[] @relation("College2")
 }
 
 model SavedCollege {
@@ -46,4 +48,7 @@ model SavedComparison {
   college2Id String
   createdAt  DateTime @default(now())
   user       User     @relation(fields: [userId], references: [id])
+  college1   College  @relation("College1", fields: [college1Id], references: [id])
+
+  college2 College @relation("College2", fields: [college2Id], references: [id])
 }

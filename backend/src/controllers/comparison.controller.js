@@ -47,7 +47,14 @@ exports.getSavedComparisons =
       const comparisons =
         await prisma.savedComparison.findMany({
 
-          where: { userId }
+          where: {
+            userId
+          },
+
+          include: {
+            college1: true,
+            college2: true
+          }
 
         });
 
